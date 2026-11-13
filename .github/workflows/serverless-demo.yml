@@ -1,0 +1,29 @@
+name: serverless-demo
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  run-function:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show the temporary runner
+        run: |
+          hostname
+          uname -a
+          date -u
+      - name: Syntax-check PHP
+        run: for f in *.php includes/*.php; do php -l "$f"; done
+      - name: Write result file
+        run: |
+          mkdir -p serverless
+          echo "Built by runner $(hostname) at $(date -u) from commit $GITHUB_SHA" > serverless/result.txt
+      - name: Commit result back to repo
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add serverless/result.txt
+          git commit -m "Add result from runner" || echo "nothing to commit"
+          git push
