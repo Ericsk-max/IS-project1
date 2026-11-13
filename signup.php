@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 require __DIR__ . '/includes/header.php';
 ?>
-<h1>Sign up</h1>
+<h1>Student Sign up (CNS 3205 CAT 2)</h1>
 <?php foreach ($errors as $m): ?><div class="err"><?= e($m) ?></div><?php endforeach; ?>
 <?php if ($ok): ?><div class="ok">Account created. You can now <a href="login.php">log in</a>.</div><?php endif; ?>
 <form method="post" action="signup.php">

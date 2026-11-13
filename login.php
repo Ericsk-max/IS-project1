@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 require __DIR__ . '/includes/header.php';
 ?>
-<h1>Login</h1>
+<h1>Student Login (CNS 3205 CAT 2)</h1>
 <?php foreach ($errors as $m): ?><div class="err"><?= e($m) ?></div><?php endforeach; ?>
 <form method="post" action="login.php">
   <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
